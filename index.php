@@ -1,11 +1,18 @@
 <?php
     include "includes/navbar.php";
     include "imageProcessing/processing.php";
+    if (isset($_GET['fileName'])) {
+        $uploadedImage = substr($_GET['fileName'],3);
+    }else{
+        $uploadedImage = "images/No-Image.jpg";
+    }
+    
+    
 ?>
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="image w-100" style="background-image: url(<?php echo substr($_GET['fileName'],3); ?>);"></div>
+                    <div class="image w-100" style="background-image: url(<?php echo $uploadedImage; ?>);"></div>
                     <p class="mx-auto">
                         <span style="margin-right: 10px"><i class="fas fa-undo"></i></span>
                         <span style="margin-right: 10px"><i class="fas fa-undo fa-flip-horizontal"></i></span>
