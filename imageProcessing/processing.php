@@ -5,7 +5,7 @@
         // jpg, png, gif or bmp?
         $exploded = explode('.',$originalImage);
         $ext = $exploded[count($exploded) - 1]; 
-
+        
         if (preg_match('/jpg|jpeg/i',$ext))
             $imageTmpConv=imagecreatefromjpeg($originalImage);
         else if (preg_match('/png/i',$ext))
