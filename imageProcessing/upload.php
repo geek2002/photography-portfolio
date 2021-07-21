@@ -54,9 +54,7 @@ if($fileExtension == "png"){
 
 
 $imageWaterMk = watermark_image($image);
-// $imageRsizePrev = resize_image($imageWaterMk,3464,2309,True);
 $imageRsizePrev = resize_image_preset($imageWaterMk,"4");
-// $imageRsizeThum = resize_image($imageWaterMk,500,333,True);
 imagejpeg($imageRsizePrev, $uploadFileDir . "preview/" . $newFileName . ".jpg", 100);
 imagejpeg($imageRsizeThum, $uploadFileDir . "thumnail/" . $newFileName . ".jpg", 100);
 cleanup($image,$imageWaterMk,$imageRsizePrev,$imageRsizeThum);
@@ -94,19 +92,6 @@ try
         echo "An error has occured, see the error details below <br>";
         echo $errormessage;
     }
-
-    // echo "Sent: <br>";
-    // echo "photo_title: " . $photo_title . "<br>";
-    // echo "photo_originalFileName: " . $photo_originalFileName . "<br>";
-    // echo "photo_location: " . $photo_location . "<br>";
-    // echo "photo_width: " . $photo_width . "<br>";
-    // echo "photo_height: " . $photo_height . "<br>";
-    // echo "photo_location_full: " . $photo_location_full . "<br>";
-    // echo "photo_location_prev: " . $photo_location_prev . "<br>";
-    // echo "photo_location_thumb: " . $photo_location_thumb . "<br>";
-    // echo "photo_price: " . $photo_price . "<br>";
-    // echo "photo_cata_id: " . $photo_cata_id . "<br>";
-
 
 
 header("Location: ../index.php?fileName=" . $uploadFileDir . "preview/" . $newFileName . ".jpg");
