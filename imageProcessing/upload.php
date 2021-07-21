@@ -109,4 +109,4 @@ try
 
 
 
-header("Location: ../index.php?fileName=" . $dest_path);
+header("Location: ../index.php?fileName=" . $uploadFileDir . "preview/" . $newFileName . ".jpg");
