@@ -75,6 +75,11 @@ $photo_originalFileName = $fileName;
 $photo_location = $_POST['location'];
 $photo_width = $imgWidth;
 $photo_height = $imgHeight;
+if ($imgWidth >= $imgHeight){
+    $photo_orientation = "L";
+}else{
+    $photo_orientation = "P";
+}
 $photo_uploadedFileName = $newFileName;
 if($_POST['price']==null){$photo_price = 0;}else{$photo_price = $_POST['price'];}
 $photo_cata_id = $_POST['catagory'];
@@ -82,13 +87,14 @@ $photo_cata_id = $_POST['catagory'];
 try
     {
         include "../global/databaseConnection.php";
-        $sql = "INSERT INTO photos(photo_title,photo_originalFileName,photo_location,photo_width,photo_height,photo_uploadedFileName,photo_price,photo_cata_id) VALUES(:title,:origFileName,:location,:width,:height,:upFileName,:price,:cataID)";
+        $sql = "INSERT INTO photos(photo_title,photo_originalFileName,photo_location,photo_width,photo_height,photo_orientation,photo_uploadedFileName,photo_price,photo_cata_id) VALUES(:title,:origFileName,:location,:width,:height,:orientation,:upFileName,:price,:cataID)";
         $statement = $pdo->prepare($sql);
         $statement->bindValue(':title',$photo_title);
         $statement->bindValue(':origFileName',$photo_originalFileName);
         $statement->bindValue(':location',$photo_location);
         $statement->bindValue(':width',$photo_width);
         $statement->bindValue(':height',$photo_height);
+        $statement->bindValue(':orientation',$photo_orientation);
         $statement->bindValue(':upFileName',$photo_uploadedFileName);
         $statement->bindValue(':price',$photo_price);
         $statement->bindValue(':cataID',$photo_cata_id);
