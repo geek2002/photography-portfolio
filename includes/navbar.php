@@ -18,7 +18,7 @@
     <body>
         <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary" style="margin-bottom: 20px;">
             <a class="navbar-brand" href="index.php">
-                <img src="https://getbootstrap.com/docs/4.6/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+                <img src="images/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
             </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
