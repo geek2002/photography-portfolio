@@ -49,6 +49,11 @@
                     
                     <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
                 </form>
+                <form action="global/globalFunctions.php" method="POST">
+                    <input name="function" type="text" value="globalDeleteAllImages" hidden>
+                    <button type="submit">Delete All Photos</button>
+                </form>
+                
             </div>
             </div>
         
@@ -56,6 +61,3 @@
         
     </body>
 </html>
-<script>
-    
-</script>
