@@ -32,6 +32,9 @@
                         <a class="nav-link" href="gallery.php">Gallery</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="gallery-test.php">Gallery-Test</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Bulk Ordering</a>
                     </li>
                     <li class="nav-item">
