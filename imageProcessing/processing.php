@@ -1,6 +1,6 @@
 <?php
     // function convertImage($originalImage, $outputImage, $quality)
-    function convertImage($originalImage)
+    function openImage($originalImage)
     {
         // jpg, png, gif or bmp?
         $exploded = explode('.',$originalImage);
@@ -14,6 +14,7 @@
             $imageTmpConv=imagecreatefromgif($originalImage);
         else if (preg_match('/bmp/i',$ext))
             $imageTmpConv=imagecreatefrombmp($originalImage);
+
 
         return $imageTmpConv;
         imagedestroy($imageTmpConv);
@@ -87,6 +88,17 @@
         imagedestroy($watermark);
         return $imageTemWtrMrk;
         imagedestroy($imageTemWtrMrk);
+    }
+    function rotateImage($image,$rotation){
+        if($rotation == -90 || $rotation == 270){ 
+            $rotation = 90; 
+        }elseif($rotation == -180 || $rotation == 180){ 
+            $rotation = 180; 
+        }elseif($rotation == -270 || $rotation == 90){ 
+            $rotation = 270; 
+        }
+        $imageRotateTemp = imagerotate($image, $rotation, 0);
+        return $imageRotateTemp;
     }
     function cleanup($image,$imageWaterMk,$imageRsizePrev,$imageRsizeThum){
         imagedestroy($image);
