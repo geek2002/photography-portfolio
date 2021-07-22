@@ -24,4 +24,5 @@
             # code...
             break;
     }
+    header("Location: index.php")
 ?>
