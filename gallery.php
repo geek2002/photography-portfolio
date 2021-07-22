@@ -12,7 +12,7 @@
             while($row = $data->fetch(PDO::FETCH_ASSOC)){
                 $width = intval($row['photo_width']);
                 $height = intval($row['photo_height']);
-                $resolution = ceil(($width * $height)/1000000);
+                $resolution = round(($width * $height)/1000000);
                 echo "<div class='col-md-6'>";
                 echo "    <div class='card'>";
                 echo "        <div class='galleryImg' style='background-Image: url(" . $globalUploadLocation . "/preview/" . $row['photo_uploadedFileName'] . ".jpg')'></div>";
