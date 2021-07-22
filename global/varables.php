@@ -1,0 +1,3 @@
+<?php
+    $globalUploadLocation = "uploaded-Images"
+?>
