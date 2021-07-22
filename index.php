@@ -27,7 +27,7 @@
                     <div class="form-row">
                         <div class="form-group" id="adminFormGroup">
                             <label for="uploadedFile">Upload A file:</label>
-                            <input type="file" name="uploadedFile" />
+                            <input type="file" name="uploadedFile" required/>
                         </div>
                         <div class="form-group col-md-12">
                             <label for="inputEmail4">Title</label>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="price">Price</label>
-                            <input type="text" class="form-control" name="price">
+                            <input type="number" min="0.01" step="0.01" class="form-control" name="price">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="catagory">Catagory</label>
@@ -56,3 +56,6 @@
         
     </body>
 </html>
+<script>
+    
+</script>
