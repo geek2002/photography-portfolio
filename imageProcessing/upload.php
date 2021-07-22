@@ -48,7 +48,7 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
                 // $_SESSION['lastUploadedFileId'] = $newFileName;
             // }else{
             //     $message = 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
-            // }
+            //
         }
     }
 }
