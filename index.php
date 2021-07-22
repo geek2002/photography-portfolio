@@ -1,8 +1,10 @@
 <?php
+    session_start();
+    include "global/varables.php";
     include "includes/navbar.php";
     include "imageProcessing/processing.php";
-    if (isset($_GET['fileName'])) {
-        $uploadedImage = substr($_GET['fileName'],3);
+    if (isset($_SESSION['lastUploadedFileId'])) {
+        $uploadedImage = $globalUploadLocation . "/preview/" . $_SESSION['lastUploadedFileId'] . ".jpg";
     }else{
         $uploadedImage = "images/No-Image.jpg";
     }
@@ -12,7 +14,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="image w-100" style="background-image: url(<?php echo $uploadedImage; ?>);"></div>
+                    <?php if(isset($_SESSION['lastUploadedFileId'])){echo $_SESSION['lastUploadedFileId'];} ?>
+                    <div class="image w-100" style="background-image: url('<?php echo $uploadedImage; ?>');"></div>
                     <p class="mx-auto">
                         <span style="margin-right: 10px"><i class="fas fa-undo"></i></span>
                         <span style="margin-right: 10px"><i class="fas fa-undo fa-flip-horizontal"></i></span>
