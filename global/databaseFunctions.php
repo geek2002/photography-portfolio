@@ -9,7 +9,15 @@
         } catch (PDOException $errorMessage) {
             echo $errorMessage;
         }
-        
+    }
+    function clearTable($table){
+        try {
+            include "databaseConnection.php";  
+            $sql = "TRUNCATE TABLE photos;";   
+            $stmt = $pdo->prepare($sql);
+            $stmt->execute();
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
     }    
 ?>
-<!-- $sql = "select * from customer INNER JOIN branch ON customer.cust_bran_ID = branch.bran_ID ORDER BY cust_ID"; -->
