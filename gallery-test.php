@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-md-8">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/f89b9e46faf22159bd1277b87f40d119.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/original/3bd41052cd01670b391e211c8d9b5550.jpg')"></div>
                         
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/c7f3d8b0b94be5ad3bf4c2be073bbec0.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/original/004307c2273dd24935dbfa241fdd81ca.jpg')"></div>
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
                             <ul style="list-style-type: none; padding:0px">
@@ -40,7 +40,7 @@
             <div class="row" style="padding-top: 20px;">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/f89b9e46faf22159bd1277b87f40d119.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/original/04e7f5cb61d47377e653c19381883f2a.jpg')"></div>
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
                             <ul style="list-style-type: none; padding:0px">
@@ -59,7 +59,7 @@
             <div class="row" style="padding-top: 20px;">
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/93118415619672ff7f1311de9484223e.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/preview/407af1232a30886925417f2aa80f5d52.jpg')"></div>
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
                             <ul style="list-style-type: none; padding:0px">
@@ -74,7 +74,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/066387b09d62e68d23fd35a3c64c5a8b.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/original/004307c2273dd24935dbfa241fdd81ca.jpg')"></div>
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
                             <ul style="list-style-type: none; padding:0px">
@@ -89,7 +89,7 @@
                 </div>
                 <div class="col-md-4">
                     <div class="card">
-                        <div class="galleryImg" style="background-Image: url('uploaded-Images/original/93118415619672ff7f1311de9484223e.jpg')"></div>
+                        <div class="galleryImg" style="background-Image: url('uploaded-images/original/b3edd2c58b9a9e4a22d097b9a7d0ef2e.jpg')"></div>
                         <div class="card-body">
                             <h6>IMG_5747 - Edit [2021-04-25].jpg</h6>
                             <ul style="list-style-type: none; padding:0px">
