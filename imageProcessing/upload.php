@@ -53,10 +53,14 @@ if (isset($_POST['uploadBtn']) && $_POST['uploadBtn'] == 'Upload')
     }
 }
 list($imgWidth,$imgHeight) = getimagesize($dest_path);
-
+if ($imgWidth >= $imgHeight){
+    $photo_orientation = "L";
+}else{
+    $photo_orientation = "P";
+}
 
 $image = openImage($dest_path);
-$imageRsizeThum = resize_image_preset($image,"thum");
+$imageRsizeThum = resize_image_preset($image,"thum-lg", $photo_orientation);
 if($fileExtension == "png"){
     imagejpeg($image, $uploadFileDir . "original/" . $newFileName . ".jpg", 100);
     unlink($dest_path);
@@ -65,7 +69,7 @@ if($fileExtension == "png"){
 
 
 $imageWaterMk = watermark_image($image);
-$imageRsizePrev = resize_image_preset($imageWaterMk,"4");
+$imageRsizePrev = resize_image_preset($imageWaterMk,"4",$photo_orientation);
 imagejpeg($imageRsizePrev, $uploadFileDir . "preview/" . $newFileName . ".jpg", 100);
 imagejpeg($imageRsizeThum, $uploadFileDir . "thumnail/" . $newFileName . ".jpg", 100);
 cleanup($image,$imageWaterMk,$imageRsizePrev,$imageRsizeThum);
@@ -75,11 +79,11 @@ $photo_originalFileName = $fileName;
 $photo_location = $_POST['location'];
 $photo_width = $imgWidth;
 $photo_height = $imgHeight;
-if ($imgWidth >= $imgHeight){
-    $photo_orientation = "L";
-}else{
-    $photo_orientation = "P";
-}
+// if ($imgWidth >= $imgHeight){
+//     $photo_orientation = "L";
+// }else{
+//     $photo_orientation = "P";
+// }
 $photo_uploadedFileName = $newFileName;
 if($_POST['price']==null){$photo_price = 0;}else{$photo_price = $_POST['price'];}
 $photo_cata_id = $_POST['catagory'];

@@ -20,7 +20,7 @@
         imagedestroy($imageTmpConv);
         
     }
-    function resize_image_preset($img, $preset,$crop=FALSE){
+    function resize_image_preset($img, $preset,$orientation,$crop=FALSE){
         $megaPixel = '{
             "24":"6000,4000",
             "20":"5477,3651",
@@ -28,14 +28,24 @@
             "12":"4243,2828",
             "8" :"3464,2309",
             "4" :"2449,1633",
-            "thum":"500,333"
+            "2" :"1732,1155",
+            "1" :"1225,816",
+            "thum-lg":"1000,666",
+            "thum-sm":"500,333"
         }';
         $obj = json_decode($megaPixel);
 
         
         $resolution = explode(",", $obj->$preset);
-        $width = $resolution[0];
-        $height = $resolution[1];
+        if ($orientation == "L") {
+            $width = $resolution[0];
+            $height = $resolution[1];
+        } elseif ($orientation == "P") {
+            $width = $resolution[1];
+            $height = $resolution[0];
+        }
+        
+        
         echo "Width: " . $width . "<br>";
         echo "Height: " . $height . "<br>";
         return resize_image($img,$width,$height,$crop);
