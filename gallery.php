@@ -22,7 +22,7 @@
                 $resolution = round(($width * $height)/1000000);
                 echo "<div class='col-md-" . strval($cardSize) . "'>";
                 echo "    <div class='card'>";
-                echo "        <div class='galleryImg' style='background-Image: url(" . $globalUploadLocation . "/preview/" . $row['photo_uploadedFileName'] . ".jpg')'></div>";
+                echo "        <div class='galleryImg' style='background-Image: url(" . $globalUploadLocation . "/thumnail/" . $row['photo_uploadedFileName'] . ".jpg')'></div>";
                 echo "        <div class='card-body'>";
                 echo "            <h6>" . $row['photo_title'] . "</h6>";
                 echo "            <ul style='list-style-type: none; padding:0px'>";
