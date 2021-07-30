@@ -10,10 +10,17 @@
             $data = getDatabaseData("select * from photos INNER JOIN categories ON photos.photo_cata_id = categories.cata_id ORDER BY photo_id");
             $rows = $data->rowCount();
             while($row = $data->fetch(PDO::FETCH_ASSOC)){
+                if ($row['photo_orientation'] == "L") {
+                    $cardSize=8;
+                }elseif ($row['photo_orientation'] == "P") {
+                    $cardSize=4;
+                }else{
+                    $cardSize=6;
+                }
                 $width = intval($row['photo_width']);
                 $height = intval($row['photo_height']);
                 $resolution = round(($width * $height)/1000000);
-                echo "<div class='col-md-6'>";
+                echo "<div class='col-md-" . strval($cardSize) . "'>";
                 echo "    <div class='card'>";
                 echo "        <div class='galleryImg' style='background-Image: url(" . $globalUploadLocation . "/preview/" . $row['photo_uploadedFileName'] . ".jpg')'></div>";
                 echo "        <div class='card-body'>";
