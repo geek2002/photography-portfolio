@@ -14,7 +14,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-6">
-                    <?php if(isset($_SESSION['lastUploadedFileId'])){echo $_SESSION['lastUploadedFileId'];} ?>
+                    <div style="text-align:center;">
+                        <p><b>Image ID:</b> <?php if(isset($_SESSION['lastUploadedFileId'])){echo $_SESSION['lastUploadedFileId'];} ?></p>
+                    </div>
                     <div class="image w-100" style="background-image: url('<?php echo $uploadedImage; ?>');"></div>
                     <p class="mx-auto">
                         <span style="margin-right: 10px"><i class="fas fa-undo"></i></span>
@@ -39,7 +41,7 @@
                         </div>
                         <div class="form-group col-md-12">
                             <label for="price">Price</label>
-                            <input type="number" min="0.01" step="0.01" class="form-control" name="price">
+                            <input type="number" min="0.00" step="0.01" class="form-control" name="price">
                         </div>
                         <div class="form-group col-md-12">
                             <label for="catagory">Catagory</label>
@@ -49,10 +51,7 @@
                     
                     <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
                 </form>
-                <form action="global/globalFunctions.php" method="POST">
-                    <input name="function" type="text" value="globalDeleteAllImages" hidden>
-                    <button type="submit">Delete All Photos</button>
-                </form>
+                
                 
             </div>
             </div>
