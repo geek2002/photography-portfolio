@@ -12,7 +12,7 @@
             }
         }
     }
-    function back(){
+    function global_back(){
         header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
     if (isset($_POST['function'])){
@@ -24,7 +24,7 @@
                 globalDeleteAllImages("preview");
                 globalDeleteAllImages("thumnail");
                 clearTable("photos");
-                back();
+                global_back();
                 break;
             default:
                 # code...
