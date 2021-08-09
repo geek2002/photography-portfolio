@@ -1,6 +1,7 @@
 <?php
     session_start();
     include "global/varables.php";
+    include "global/databaseFunctions.php";
     include "includes/navbar.php";
     include "imageProcessing/processing.php";
     if (isset($_SESSION['lastUploadedFileId'])) {
@@ -8,7 +9,7 @@
     }else{
         $uploadedImage = "images/No-Image.jpg";
     }
-    
+    checkID(1); 
     
 ?>
         <div class="container">
