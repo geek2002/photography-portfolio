@@ -4,7 +4,11 @@
             include "databaseConnection.php";     
             $stmt = $pdo->query($sql);
             if($stmt->rowCount()){
-                return $stmt;
+                if ($stmt->rowCount() > 0) {
+                    return $stmt;
+                }
+            }else{
+                return "No Data";
             }
         } catch (PDOException $errorMessage) {
             echo $errorMessage;
@@ -43,19 +47,20 @@
             echo $errorMessage;
         }
     }
-    function checkID($id){{
+    function checkID($checkID){
         try {
             include "databaseConnection.php";  
-            $sql = "SELECT user_id FROM users WHERE user_id = " . $id;   
+            $sql = "SELECT userID FROM users WHERE userID = " . $checkID;   
             $stmt = $pdo->query($sql);
             if($stmt->rowCount()){
                 $available = false;
             }else{
                 $available = true;
             }
+            echo $available;
             return $available;
         } catch (PDOException $errorMessage) {
             echo $errorMessage;
         }
-    }} 
+    }
 ?>
