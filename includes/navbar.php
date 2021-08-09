@@ -48,6 +48,12 @@
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Delete All Photos</button>
                     </form>
                 </li>
+                <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">
+                    Launch static backdrop modal
+                </button>
+
+                </li>
             </ul>
         </div>
     </nav>

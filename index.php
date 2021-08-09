@@ -52,10 +52,56 @@
                     
                     <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
                 </form>
+                  
                 
-                
+                </div>
             </div>
-            </div>
+            <div class="modal fade" id="createUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="userManagment/createUser.php" enctype="multipart/form-data">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" name="email" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="username">Username</label>
+                                    <input type="text" class="form-control" name="username">
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="fname">First Name</label>
+                                    <input type="text" class="form-control" name="fname" required>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="lname">Last Name</label>
+                                    <input type="text" class="form-control" name="lname" required>
+                                </div>
+                                <input type="text" value="login" name="action" hidden>
+                            </div>
+                            
+                            
+                        
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div> 
         
         </div>
         
