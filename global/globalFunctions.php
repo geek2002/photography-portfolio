@@ -1,5 +1,6 @@
 <?php
     include "databaseFunctions.php";
+    include "varables.php";
     function globalDeleteAllImages($folder){
         include "varables.php";
         echo "Deleting folder: " . $folder . "<br>";
@@ -11,18 +12,25 @@
             }
         }
     }
-    $function = $_POST['function'];
-    echo "Function: " . $function . "<br>";
-    switch ($function) {
-        case 'globalDeleteAllImages':
-            globalDeleteAllImages("original");
-            globalDeleteAllImages("preview");
-            globalDeleteAllImages("thumnail");
-            clearTable("photos");
-            break;
-        default:
-            # code...
-            break;
+    function back(){
+        header('Location: ' . $_SERVER['HTTP_REFERER']);
     }
-    header("Location: ../index.php")
+    if (isset($_POST['function'])){
+        $function = $_POST['function'];
+        echo "Function: " . $function . "<br>";
+        switch ($function) {
+            case 'globalDeleteAllImages':
+                globalDeleteAllImages("original");
+                globalDeleteAllImages("preview");
+                globalDeleteAllImages("thumnail");
+                clearTable("photos");
+                back();
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
+    
+    
 ?>
