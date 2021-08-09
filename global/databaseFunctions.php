@@ -42,5 +42,20 @@
         } catch (PDOException $errorMessage) {
             echo $errorMessage;
         }
-    }    
+    }
+    function checkID($id){{
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT user_id FROM users WHERE user_id = " . $id;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                $available = false;
+            }else{
+                $available = true;
+            }
+            return $available;
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
+    }} 
 ?>
