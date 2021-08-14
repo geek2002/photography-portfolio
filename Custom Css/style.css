@@ -14,5 +14,9 @@
     height: 512px;
     width:auto;
 }
+.inputError{
+    background: rgba(255, 0, 0, 0.5) !important;
+    border: red solid 5px !important;
+}
 
 
