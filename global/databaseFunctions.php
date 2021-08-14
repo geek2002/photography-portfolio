@@ -63,4 +63,20 @@
             echo $errorMessage;
         }
     }
+    function checkEmail($email){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT user_email FROM users WHERE user_email = '" . $email . "'";   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                $available = false;
+            }else{
+                $available = true;
+            }
+            echo $available;
+            return $available;
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
+    }
 ?>
