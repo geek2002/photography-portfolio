@@ -9,7 +9,7 @@
         <?php
             $data = getDatabaseData("select * from photos INNER JOIN categories ON photos.photo_cata_id = categories.cata_id ORDER BY photo_id");
             echo $data;
-            if ($data != "No Data"){
+            if ($data != "No Data"){    
                 $rows = $data->rowCount();
                 while($row = $data->fetch(PDO::FETCH_ASSOC)){
                     if ($row['photo_orientation'] == "L") {
