@@ -5,10 +5,10 @@
         <link rel="stylesheet" href="Custom Css/style.css">
 
         <!-- Bootstrap -->
-        <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-        <script src="bootstrap/js/jquery.min.js"></script>
-        <script src="bootstrap/js/popper.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="/Global-Assets/bootstrap/css/bootstrap.min.css">
+        <script src="/Global-Assets/bootstrap/js/jquery.min.js"></script>
+        <script src="/Global-Assets/bootstrap/js/popper.min.js"></script>
+        <script src="/Global-Assets/bootstrap/js/bootstrap.min.js"></script>
 
         <!-- Font Awesome -->
         <link href="fonts/fontawesome/css/fontawesome.css" rel="stylesheet">
@@ -49,10 +49,14 @@
                     </form>
                 </li>
                 <li class="nav-item">
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">
-                    Launch static backdrop modal
-                </button>
-
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createUser">
+                        [TEMP] Sign up form
+                    </button>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login">
+                        [TEMP] Login form
+                    </button>
                 </li>
             </ul>
         </div>
