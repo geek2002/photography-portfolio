@@ -2,16 +2,15 @@
     include "includes/navbar.php";
     include "global/varables.php";
     include "global/databaseFunctions.php";
-?>
 
-        <div class="container">
-                <?php
-                    $data = countPhotos("L");
-                    echo "<p> Landscape: " . $data[0] . "</p>";
-                    echo "Landscape IDs: ";
-                    print_r($data[1]);
-                    $data = countPhotos("P");
-                    echo "<p> Portrait: " . $data[0] . "</p>";
-                    echo "Portrait IDs: ";
-                    print_r($data[1]);
-                ?>
+
+    $storedPassword = '$2y$10$K.sug9u3bgMwq64kI8r2zOqZIxLOXGtgjBHbtATRg.KGzNsY4QmVm'; 
+    $inputPassword = "GreenCrab264";
+
+    // echo password_hash($inputPassword,PASSWORD_DEFAULT);
+    if (password_verify($inputPassword,$storedPassword)) {
+        echo "Password Correct";
+    }else{
+        echo "Password Incorrect";
+    }
+?>
