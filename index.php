@@ -9,7 +9,7 @@
     }else{
         $uploadedImage = "images/No-Image.jpg";
     }
-    checkID(1); 
+    checkID(1);
     
 ?>
         <div class="container">
@@ -26,43 +26,39 @@
                 </div>
                 <div class="col-md-6">
                     <form method="POST" action="imageProcessing/upload.php" enctype="multipart/form-data">
-                    
-                    <div class="form-row">
-                        <div class="form-group" id="adminFormGroup">
-                            <label for="uploadedFile">Upload A file:</label>
-                            <input type="file" name="uploadedFile" required/>
+                        <div class="form-row">
+                            <div class="form-group" id="adminFormGroup">
+                                <label for="uploadedFile">Upload A file:</label>
+                                <input type="file" name="uploadedFile" required/>
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="inputEmail4">Title</label>
+                                <input type="text" class="form-control" name="title">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="location">Location</label>
+                                <input type="text" class="form-control" name="location">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="price">Price</label>
+                                <input type="number" min="0.00" step="0.01" class="form-control" name="price">
+                            </div>
+                            <div class="form-group col-md-12">
+                                <label for="catagory">Catagory</label>
+                                <input type="text" class="form-control" name="catagory">
+                            </div>
                         </div>
-                        <div class="form-group col-md-12">
-                            <label for="inputEmail4">Title</label>
-                            <input type="text" class="form-control" name="title">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="location">Location</label>
-                            <input type="text" class="form-control" name="location">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="price">Price</label>
-                            <input type="number" min="0.00" step="0.01" class="form-control" name="price">
-                        </div>
-                        <div class="form-group col-md-12">
-                            <label for="catagory">Catagory</label>
-                            <input type="text" class="form-control" name="catagory">
-                        </div>
-                    </div>
-                    
-                    <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
-                </form>
-                  
-                
+                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
+                    </form>
                 </div>
             </div>
             <div class="modal fade" id="createUser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Create User</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
+                            <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
@@ -70,7 +66,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" name="email" required>
+                                    <input type="email" class="form-control inputError" name="email" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="username">Username</label>
@@ -88,7 +84,44 @@
                                     <label for="lname">Last Name</label>
                                     <input type="text" class="form-control" name="lname" required>
                                 </div>
+                                <div class="form-group col-md-6">
+                                    <label for="userType">Account Type</label>
+                                    <select class="custom-select custom-select-sm" name="userType">
+                                        <option selected value="0">Normal</option>
+                                        <option value="1">Admin</option>
+                                    </select>
+                                </div>
                                 <input type="text" value="login" name="action" hidden>
+                            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form method="POST" action="userManagment/login.php" enctype="multipart/form-data">
+                            <div class="form-row">
+                                <div class="form-group col-md-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control inputError" name="email" required>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" name="password" required>
+                                </div>
                             </div>
                             
                             
@@ -96,12 +129,12 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
+                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
                     </div>
                 </div>
-            </div> 
+            </div>  
         
         </div>
         
