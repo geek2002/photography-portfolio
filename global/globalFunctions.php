@@ -12,9 +12,30 @@
             }
         }
     }
-    function global_back(){
-        header('Location: ' . $_SERVER['HTTP_REFERER']);
+    function global_back($reference = null){
+        if (isset($reference)) {
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . "?" . $reference);
+        }else{
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        }
+        
     }
+    function createRandomUserID(){
+        while (true){
+            $tempID = rand(1111111111,9999999999);
+            $available = checkID($tempID);
+            if ($available == true){
+                return $tempID;
+                break;
+            }
+        }
+    }
+
+
+
+
+
+
     if (isset($_POST['function'])){
         $function = $_POST['function'];
         echo "Function: " . $function . "<br>";
