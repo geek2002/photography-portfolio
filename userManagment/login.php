@@ -1,6 +1,6 @@
 <?php
     
-
+    session_start();
     $inEmail = $_POST['email'];
     $inPassword = $_POST['password'];
 
@@ -20,6 +20,10 @@
             if (password_verify($inPassword, $row['user_password'])) {
                 echo 'Password is valid!';
                 echo "Checking User Type";
+                $_SESSION['userID'] = $row['userID'];
+                $_SESSION['fname'] = $row['user_fname'];
+                $_SESSION['lname'] = $row['user_lname'];
+                $_SESSION['username'] = $row['user_username '];
                 if ($row['user_type'] == 0) {
                     echo "Normal user";
                     header("Location: ../userPages/normal.php");
