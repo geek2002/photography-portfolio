@@ -79,4 +79,55 @@
             echo $errorMessage;
         }
     }
+    function getTokens($userID){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT user_tokens FROM users WHERE userID = " . $userID;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $tokens = $row['user_tokens'];
+                    return $tokens;
+                }
+            }else{
+                echo "Error: No account found";
+            }
+            echo $available;
+            return $available;
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
+    }
+    function increaseTokens($userID,$ammount){
+        $currentTokens = getTokens($userID);
+        $newTokens = $currentTokens + $ammount;
+        
+        try {
+            include "databaseConnection.php";  
+            $sql = "UPDATE users SET user_tokens = :tokens WHERE userID = :userID";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':tokens',$newTokens);
+            $stmt->bindValue(':userID',$userID);
+            $stmt->execute();
+            echo $stmt->rowCount() . " records UPDATED successfully";
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
+    }
+    function decreaseTokens($userID,$ammount){
+        $currentTokens = getTokens($userID);
+        $newTokens = $currentTokens - $ammount;
+        
+        try {
+            include "databaseConnection.php";  
+            $sql = "UPDATE users SET user_tokens = :tokens WHERE userID = :userID";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindValue(':tokens',$newTokens);
+            $stmt->bindValue(':userID',$userID);
+            $stmt->execute();
+            echo $stmt->rowCount() . " records UPDATED successfully";
+        } catch (PDOException $errorMessage) {
+            echo $errorMessage;
+        }
+    }
 ?>
