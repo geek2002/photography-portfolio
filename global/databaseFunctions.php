@@ -11,7 +11,7 @@
                 return "No Data";
             }
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function clearTable($table){
@@ -21,7 +21,7 @@
             $stmt = $pdo->prepare($sql);
             $stmt->execute();
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function countPhotos($orientation=null){
@@ -44,7 +44,7 @@
                 return $returnData;
             }
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function checkID($checkID){
@@ -60,7 +60,7 @@
             echo $available;
             return $available;
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function checkEmail($email){
@@ -76,7 +76,7 @@
             echo $available;
             return $available;
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function getTokens($userID){
@@ -95,7 +95,7 @@
             echo $available;
             return $available;
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function increaseTokens($userID,$ammount){
@@ -111,7 +111,7 @@
             $stmt->execute();
             echo $stmt->rowCount() . " records UPDATED successfully";
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
     function decreaseTokens($userID,$ammount){
@@ -127,7 +127,7 @@
             $stmt->execute();
             echo $stmt->rowCount() . " records UPDATED successfully";
         } catch (PDOException $errorMessage) {
-            echo $errorMessage;
+            echo "<samp>" . $errorMessage . "</samp>";
         }
     }
 ?>
