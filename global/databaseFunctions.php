@@ -1,4 +1,12 @@
 <?php
+    session_start();
+    function back($reference = null){
+        if (isset($reference)) {
+            header('Location: ' . $_SERVER['HTTP_REFERER'] . "?" . $reference);
+        }else{
+            header('Location: ' . $_SERVER['HTTP_REFERER']);
+        } 
+    }
     function getDatabaseData($sql){
         try {
             include "databaseConnection.php";     
@@ -57,7 +65,7 @@
             }else{
                 $available = true;
             }
-            echo $available;
+            // echo $available;
             return $available;
         } catch (PDOException $errorMessage) {
             echo "<samp>" . $errorMessage . "</samp>";
@@ -130,4 +138,65 @@
             echo "<samp>" . $errorMessage . "</samp>";
         }
     }
+
+    function getOwnedPhotos($userID){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT photoID FROM user_photo_link WHERE userID = " . $userID;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                $photos = [];
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $photoID = $row['photoID'];
+                    array_push($photos, $photoID);
+                }
+                return $photos;
+            }else{
+                echo "<samp> Error: No Photos found </samp>";
+            }
+        } catch (PDOException $errorMessage) {
+            echo "<samp>" . $errorMessage . "</samp>";
+        }
+    }
+    function getPhotoFilename($photoID){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT photo_uploadedFileName FROM photos WHERE photoID = " . $photoID;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $filename = $row['photo_uploadedFileName'];
+                    return $filename . ".jpg";
+                }
+            }else{
+                echo "Error: No Photo found";
+            }
+        } catch (PDOException $errorMessage) {
+            echo "<samp>" . $errorMessage . "</samp>";
+        }
+    }
+
+
+
+    if (isset($_POST['func'])){
+        $tokenAmmount = $_POST['func'];
+    }
+    if (isset($_POST['func'])){
+        $function = $_POST['func'];
+        echo "Function: " . $function . "<br>";
+        switch ($function) {
+            case 'incrToken':
+                increaseTokens($_SESSION['userID'],$tokenAmmount);
+                back();
+                break;
+            case 'descToken':
+                decreaseTokens($_SESSION['userID'],$tokenAmmount);
+                back();
+                break;
+            default:
+                # code...
+                break;
+        }
+    }
 ?>
+
