@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title>post test</title>
+    </head>
+    <body>
+        <input type="submit" class="button" name="insert" value="insert" />
+        <input type="submit" class="button" name="select" value="select" />
+    </body>
+</html>
+<script>
+    $('.button').click(function() {
+        $.ajax({
+            type: "POST",
+            url: "some.php",
+            data: { name: "John" }
+        }).done(function( msg ) {
+            alert( "Data Saved: " + msg );
+        });
+    });
+</script>
