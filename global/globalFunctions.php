@@ -17,8 +17,7 @@
             header('Location: ' . $_SERVER['HTTP_REFERER'] . "?" . $reference);
         }else{
             header('Location: ' . $_SERVER['HTTP_REFERER']);
-        }
-        
+        } 
     }
     function createRandomUserID(){
         while (true){
