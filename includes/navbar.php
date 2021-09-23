@@ -11,9 +11,9 @@
         <script src="/Global-Assets/bootstrap/js/bootstrap.min.js"></script>
 
         <!-- Font Awesome -->
-        <link href="fonts/fontawesome/css/fontawesome.css" rel="stylesheet">
-        <link href="fonts/fontawesome/css/brands.css" rel="stylesheet">
-        <link href="fonts/fontawesome/css/solid.css" rel="stylesheet">
+        <link href="/Global-Assets/fonts/fontawesome/css/fontawesome.css" rel="stylesheet">
+        <link href="/Global-Assets/fonts/fontawesome/css/brands.css" rel="stylesheet">
+        <link href="/Global-Assets/fonts/fontawesome/css/solid.css" rel="stylesheet">
     </head>
     <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-secondary" style="margin-bottom: 20px;">
