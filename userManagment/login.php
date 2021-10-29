@@ -3,7 +3,7 @@
     session_start();
     $inEmail = $_POST['email'];
     $inPassword = $_POST['password'];
-
+    echo "<br><br>";
     echo "Input Email: " . $inEmail . "<br>";
     echo "Input Password: " . $inPassword . "<br>";
 
@@ -23,7 +23,9 @@
                 $_SESSION['userID'] = $row['userID'];
                 $_SESSION['fname'] = $row['user_fname'];
                 $_SESSION['lname'] = $row['user_lname'];
-                $_SESSION['username'] = $row['user_username '];
+                $_SESSION['username'] = $row['user_username'];
+                echo "User Type: " . $row['user_type'];
+                echo "Redirecting...";
                 if ($row['user_type'] == 0) {
                     echo "Normal user";
                     header("Location: ../userPages/normal.php");
@@ -33,10 +35,9 @@
                     header("Location: ../userPages/admin.php");
                     exit;
                 }
-                echo "Redirecting...";
 
             } else {
-                echo 'Invalid password.';
+                echo '<br><br> <samp style="font-size:48pt; color:red;">Invalid password.</samp>';
             }
         }else{
             return "No Data";
