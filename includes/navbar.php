@@ -26,22 +26,57 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="<?php echo $rootLocation;?>index.php">Home <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="gallery.php">Gallery</a>
+                    <a class="nav-link" href="<?php echo $rootLocation;?>gallery.php">Gallery</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="gallery-test.php">Gallery-Test</a>
+                    <a class="nav-link" href="<?php echo $rootLocation;?>gallery-test.php">Gallery-Test</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Bulk Ordering</a>
+                    <a class="nav-link" href="<?php echo $rootLocation;?>#bulk">Bulk Ordering</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Contact Me</a>
+                    <a class="nav-link" href="<?php echo $rootLocation;?>#contact">Contact Me</a>
                 </li>
             </ul>
             <ul class="navbar-nav">
+                <?php
+                    if(isset($_SESSION['userID'])){
+                        echo '<!-- Logged In -->';
+                        echo '    <li class="nav-item">';
+                        echo '        <div class="btn-group" style="width:125px; height:35px">';
+                        echo '            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="padding-top: 3px !important;">';
+                        echo '                <span style="margin-top: 2px;">Account</span>';
+                        echo '                <img src="' . $rootLocation . 'images/icons/img_avatar0.png" alt="Profile Picture" width="16px" style="border-radius: 16px;">';
+                        echo '            </button>';
+                        echo '            <div class="dropdown-menu dropdown-menu-lg-right">';
+                        echo '                <p class="dropdown-item-text" style="margin-bottom: 0px;">' . $_SESSION['username'] . '</p>';
+                        echo '                <p class="dropdown-item-text" style="font-size:small; margin-bottom: 0px;">' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '</p>';
+                        echo '                <p class="dropdown-item-text" style="font-size:small;">' . hideEmail(getEmail($_SESSION['userID'])) . '</p>';
+                        echo '';
+                        echo '                <a class="dropdown-item" href="#">Manage Account</a>';
+                        echo '                <div class="dropdown-divider"></div>';
+                        echo '                <a class="dropdown-item" href="' . $rootLocation . 'userManagment/logout.php">Log Out</a>';
+                        echo '            </div>';
+                        echo '        </div>';
+                        echo '    </li>';
+                    }else{
+                        echo' <!-- Logged Out -->';
+                        echo' <li class="nav-item">';
+                        echo'     <div class="btn-group" style="width:125px; height:35px">';
+                        echo'         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#login" style="padding-top: 3px !important;">';
+                        echo '            <span style="margin-top: 2px;">Login</span>';
+                        echo '        </button>';
+                        echo'     </div>';
+                        echo' </li>';
+                    }
+                ?>
+                
+                
+            </ul>
+            <!-- <ul class="navbar-nav">
                 <li class="nav-item">
                     <form class="form-inline my-2 my-lg-0" action="global/globalFunctions.php" method="POST" onsubmit="return confirm('Are you sure you want to submit?');">
                         <input name="function" type="text" value="globalDeleteAllImages" hidden>
@@ -58,6 +93,6 @@
                         [TEMP] Login form
                     </button>
                 </li>
-            </ul>
+            </ul> -->
         </div>
     </nav>
