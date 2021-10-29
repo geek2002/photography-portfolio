@@ -1,5 +1,6 @@
 <?php
     include "../global/globalFunctions.php";
+    include "../global/databaseFunctions.php";
 
     
     $inId = createRandomUserID();
@@ -44,8 +45,21 @@
         $stmt= $pdo->prepare($sql);
         $stmt->execute($data);
         if ($stmt){
-            echo "Data entered into the database sucsessfully";
+            echo "<br>Data entered into the database sucsessfully";
+            // log the user in
+            session_start();
+            echo 'Password is valid!';
+            echo "Checking User Type";
+            $_SESSION['userID'] = $inId;
+            $_SESSION['fname'] = $inFname;
+            $_SESSION['lname'] = $inLname;
+            $_SESSION['username'] = $inUsername;
+            echo "User Type: " . $inUserType;
+            echo "Redirecting...";
 
+            echo "<br> User ID: " . $_SESSION['userID'];
+            header("Location: accountPage.php");
+            exit;
         }
 
     }catch(PDOException $errormessage){
