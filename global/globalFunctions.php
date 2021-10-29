@@ -1,5 +1,4 @@
 <?php
-    include "databaseFunctions.php";
     include "varables.php";
     function globalDeleteAllImages($folder){
         include "varables.php";
@@ -29,6 +28,11 @@
             }
         }
     }
+    function hideEmail($email){
+        $var = '24';
+        return $email;
+    }
+
 
 
 
