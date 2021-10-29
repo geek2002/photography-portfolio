@@ -1,7 +1,9 @@
 <?php
     session_start();
+    include "global/globalFunctions.php";
     include "global/varables.php";
     include "global/databaseFunctions.php";
+    $rootLocation = "";
     include "includes/navbar.php";
     include "imageProcessing/processing.php";
     if (isset($_SESSION['lastUploadedFileId'])) {
@@ -29,7 +31,7 @@
                         <div class="form-row">
                             <div class="form-group" id="adminFormGroup">
                                 <label for="uploadedFile">Upload A file:</label>
-                                <input type="file" name="uploadedFile" required/>
+                                <input type="file" name="uploadedFile" accept=".png,.jpg,.gif,.bmp" required/>
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="inputEmail4">Title</label>
@@ -45,7 +47,15 @@
                             </div>
                             <div class="form-group col-md-12">
                                 <label for="catagory">Catagory</label>
-                                <input type="text" class="form-control" name="catagory">
+                                <select class="custom-select custom-select-md mb-3">
+                                    <option selected>Select Catagory</option>
+                                    <?php
+                                        $catagories = getCatagories();
+                                        foreach ($catagories as &$catagory) {
+                                            echo "<option value='" . $catagory . "'>" . getCatagoryName($catagory) . "</option>";
+                                        }
+                                    ?>
+                                </select>
                             </div>
                         </div>
                         <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Upload</button>
@@ -66,7 +76,7 @@
                             <div class="form-row">
                                 <div class="form-group col-md-12">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control inputError" name="email" required>
+                                    <input type="email" class="form-control" name="email" required>
                                 </div>
                                 <div class="form-group col-md-12">
                                     <label for="username">Username</label>
@@ -105,38 +115,93 @@
             <div class="modal fade" id="login" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Login</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <form method="POST" action="userManagment/login.php" enctype="multipart/form-data">
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control inputError" name="email" required>
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Login</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="userManagment/login.php" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" required>
+                                    </div>
                                 </div>
-                                <div class="form-group col-md-12">
-                                    <label for="password">Password</label>
-                                    <input type="password" class="form-control" name="password" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="error-unauth" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Unauthorised</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p style="color:red;">Error: You need to be logged in to access this page.</p>
+                            <form method="POST" action="userManagment/login.php" enctype="multipart/form-data">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="email">Email</label>
+                                        <input type="email" class="form-control" name="email" required>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="password">Password</label>
+                                        <input type="password" class="form-control" name="password" required>
+                                    </div>
                                 </div>
-                            </div>
-                            
-                            
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
-                        </form>
-                    </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>  
         
         </div>
-        
     </body>
 </html>
+<script>
+    const params = new URLSearchParams(window.location.search)
+    if (params.has('error')) {
+        value=params.get('error')
+        switch (value) {
+            case "unauth":
+                $('#error-unauth').modal('show')
+                break;
+            default:
+                break;
+        }
+    }
+    if (params.has('debug')) {
+        value=params.get('debug')
+        switch (value) {
+            case "login":
+                $('#login').modal('show')
+                break;
+            case "createUser":
+                $('#createUser').modal('show')
+                break;
+            default:
+                break;
+        }
+    }
+    
+    
+</script>
