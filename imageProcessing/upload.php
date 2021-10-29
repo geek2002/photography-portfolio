@@ -111,8 +111,8 @@ try
     catch(PDOException $errormessage)
     {
         echo "An error has occured, see the error details below <br>";
-        echo $errormessage;
+        echo "<samp>" . $errormessage . "</samp>";
     }
 
 
-header("Location: ../index.php");
+// header("Location: ../index.php");
