@@ -1,5 +1,4 @@
 <?php
-    session_start();
     function back($reference = null){
         if (isset($reference)) {
             header('Location: ' . $_SERVER['HTTP_REFERER'] . "?" . $reference);
@@ -170,6 +169,59 @@
                 }
             }else{
                 echo "Error: No Photo found";
+            }
+        } catch (PDOException $errorMessage) {
+            echo "<samp>" . $errorMessage . "</samp>";
+        }
+    }
+    function getCatagories(){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT * FROM categories";   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                $catagories = [];
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $cataID = $row['cataID'];
+                    array_push($catagories, $cataID);
+                }
+                return $catagories;
+            }else{
+                echo "<samp> Error: No Photos found </samp>";
+            }
+        } catch (PDOException $errorMessage) {
+            echo "<samp>" . $errorMessage . "</samp>";
+        }
+    }
+    function getCatagoryName($cataID){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT cata_name FROM categories WHERE cataID = " . $cataID;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $name = $row['cata_name'];
+                    return $name;
+                }
+            }else{
+                echo "Error: No Catagories found";
+            }
+        } catch (PDOException $errorMessage) {
+            echo "<samp>" . $errorMessage . "</samp>";
+        }
+    }
+    function getEmail($userID){
+        try {
+            include "databaseConnection.php";  
+            $sql = "SELECT user_email FROM users WHERE userID = " . $userID;   
+            $stmt = $pdo->query($sql);
+            if($stmt->rowCount()){
+                while($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+                    $email = $row['user_email'];
+                    return $email;
+                }
+            }else{
+                echo "Error: No Email found";
             }
         } catch (PDOException $errorMessage) {
             echo "<samp>" . $errorMessage . "</samp>";
