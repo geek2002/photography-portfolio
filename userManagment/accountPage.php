@@ -1,11 +1,14 @@
-<html>
-    <body>
-        <h1>Account Managment Page</h1>
-        <h2>Welcome User ID: 
-        <?php
-            session_start();
-            echo $_SESSION['userID'];
-        ?>
-        </h2>
-    </body>
-</html>
+<?php
+    session_start();
+    $rootLocation = "../";
+    include "../global/varables.php";
+    include "../global/databaseFunctions.php";
+    include "../global/globalFunctions.php";
+    include "../includes/navbar.php";
+
+    if(isset($_SESSION['userID']) == false){
+        header("Location: ../?error=unauth");
+        exit;
+        echo "NOT";
+    }
+?>

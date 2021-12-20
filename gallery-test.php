@@ -1,4 +1,5 @@
 <?php
+    $rootLocation = "";
     include "includes/navbar.php";
 ?>
 

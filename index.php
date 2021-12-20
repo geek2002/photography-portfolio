@@ -105,6 +105,7 @@
                             </div>
                     </div>
                     <div class="modal-footer">
+                        
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                         <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
                         </form>
@@ -135,6 +136,7 @@
                                 </div>
                         </div>
                         <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary float-left" data-dismiss="modal">Create Account</button>
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button name="uploadBtn" type="submit" value="Upload" class="btn btn-primary">Submit</button>
                             </form>

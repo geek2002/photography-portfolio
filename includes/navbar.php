@@ -18,7 +18,7 @@
     <body>
     <nav class="navbar sticky-top navbar-expand-md navbar-dark bg-secondary" style="margin-bottom: 20px;">
         <a class="navbar-brand" href="index.php">
-            <img src="images/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
+            <img src="<?php echo $rootLocation ?>images/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -56,7 +56,7 @@
                         echo '                <p class="dropdown-item-text" style="font-size:small; margin-bottom: 0px;">' . $_SESSION['fname'] . ' ' . $_SESSION['lname'] . '</p>';
                         echo '                <p class="dropdown-item-text" style="font-size:small;">' . hideEmail(getEmail($_SESSION['userID'])) . '</p>';
                         echo '';
-                        echo '                <a class="dropdown-item" href="#">Manage Account</a>';
+                        echo '                <a class="dropdown-item" href="' . $rootLocation . 'userManagment/accountPage.php">Manage Account</a>';
                         echo '                <div class="dropdown-divider"></div>';
                         echo '                <a class="dropdown-item" href="' . $rootLocation . 'userManagment/logout.php">Log Out</a>';
                         echo '            </div>';
